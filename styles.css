@@ -1,0 +1,82 @@
+.itemImg {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.wishlistContainer {
+    display: grid;
+    grid: 200px / auto auto auto;
+}
+
+.wishlistElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8B5E69;
+    margin: 10%;
+    position: relative;
+    padding-left: 10px;
+}
+
+.wishlistElement > button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    background-color: transparent;
+    font-size: larger;
+}
+
+.topNav {
+    color: #F4ECE6;
+    display: flex;
+    flex-direction: row;
+    background-color: #2F2E33;
+    padding: 10px;
+    font-family: "Playfair Display", serif;
+    align-items: center;
+}
+
+body {
+    background-color: #737275;
+    margin: 0;
+}
+.dropBtn {
+    margin-left: 20px;
+    padding: 16px;
+    border: none;
+    font-family: "Quicksand", serif;
+    font-weight: bold;
+    background-color: #2F2E33;
+    color: #F4ECE6;
+    font-size: large;
+}
+
+.dropBtn:hover, .dropBtn:focus {
+    background-color: #8B5E69;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownContent {
+    display: none;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 160px;
+    background-color: #8B5E69;
+    padding: 10px;
+}
+
+.dropdownContent > div {
+    padding: 10px;
+    font-weight: bold;
+    font-family: "Quicksand", serif;
+}
+
+.dropdown:hover .dropdownContent {
+    display: block;
+}
