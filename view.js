@@ -4,14 +4,16 @@ function updateView() {
         <div class="topNav">
             <h1>Wishlist</h1>
             ${createCategoryDropdown()}
+            ${createAddItem()}
         </div>
-        ${createAddItem()}
-        ${showWishlist()}
+        <div class="wishlistContainer">
+            ${showWishlist()}
+        </div>
     `;
 }
 
 function createAddItem(){
-    if(!model.isAdding) return '<button onclick="startAdd()">Add item</button>';
+    if(!model.isAdding) return '<button class="addItemBtn" onclick="startAdd()">Add item</button>';
     return /*HTML*/`
         <form>
             <label for="name">Item name</label>
@@ -51,7 +53,7 @@ function createAddItem(){
 }
 
 function showWishlist() {
-    let wishlistHtml = `<div class="wishlistContainer">`;
+    let wishlistHtml = ``;
     let index = 0;
     for (let item of model.wishlist) {
         wishlistHtml += /*HTML*/`
@@ -67,7 +69,6 @@ function showWishlist() {
         `;
         index++;
     }
-    wishlistHtml += '</div>';
     return wishlistHtml;
 }
 
