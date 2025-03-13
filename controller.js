@@ -17,6 +17,8 @@ function cancelAddItem() {
 }
 
 function deleteItem(index) {
+    console.log("hei");
+    
     model.wishlist.splice(index, 1);
     saveWishlist();
     updateView();

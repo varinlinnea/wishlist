@@ -1,45 +1,89 @@
 .itemImg {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+    width: 250px;
+    border-radius: 25px;
 }
 
 .wishlistContainer {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .wishlistElement {
+    padding: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #8B5E69;
-    margin: 10%;
-    position: relative;
-    padding-left: 10px;
+    background-color: #8A9A5B;
+    margin: 20px;
+    border: 2px solid #4F684C;
+    border-radius: 25px;
+    color: #F4ECE6;
+    font-family: "Quicksand", serif;
+    font-weight: bold;
 }
 
-.wishlistElement > button {
-    position: absolute;
-    top: 0;
-    right: 0;
+
+.textContainer > a {
+    color: #2A728F;
+}
+
+.itemBtn {
+    font-family: "Quicksand", serif;
+    font-weight: bold;
+    color: #F4ECE6;
+    background-color: #4F684C;
     border: 0;
-    background-color: transparent;
-    font-size: larger;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2px;
 }
 
 .addItemBtn {
     width: 150px;
     height: 50px;
-    position: absolute;
-    border-radius: 4px;
+    position: relative;
     right: 20px;
-    bottom: -500px;
-    background-color: #2f2e3349;
+    background-color: #2f2e33;
     color: #F4ECE6;
     font-family: "Quicksand", serif;
     font-weight: bolder;
-    font-size: large;
+    font-size: 30px;
     border: 0;
+}
+
+.addItemPopup {
+    position: absolute;
+    z-index: 101;
+    width: 500px;
+    right: 30px;
+    top: -10px;
+}
+
+.addItemPopup > form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #4F684C;
+    z-index: 101;
+    padding: 20px;
+    font-family: "Quicksand", serif;
+    font-weight: bolder;
+}
+.addItemPopup > form > * {
+    margin: 2px;
+    padding: 2px;
+    border: 0;
+}
+
+.addItemPopup > form > input {
+    border: 0;
+    height: 20px;
+}
+
+.formBtn {
+    font-family: "Quicksand", serif;
 }
 
 .topNav {
@@ -52,10 +96,21 @@
     align-items: center;
     position: sticky;
     top: 0;
+    justify-content: space-between;
 }
 
 .topNav > h1 {
     margin-left: 20px;
+}
+
+.navLeft {
+    display: flex;
+    align-items: center;
+}
+
+.navRight {
+    position: relative;
+    height: 100%;
 }
 
 body {
@@ -99,4 +154,33 @@ body {
 
 .dropdown:hover .dropdownContent {
     display: block;
+}
+
+.searchBar {
+    height: 36px;
+    width: 200px;
+    padding: 10px;
+    background: #4F684C;
+    color: #F4ECE6;
+    font-family: "Quicksand", serif;
+    margin-right: 0;
+    margin-left: 30px;
+    border: 0;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.searchBar::placeholder {
+    color: #F4ECE6;
+    font-family: "Quicksand", serif;
+}
+
+.searchBtn {
+    color: #F4ECE6;
+    background-color: #4F684C;
+    padding: 10px;
+    margin-left: 0;
+    border: 0; 
+    height: 36px;
+    vertical-align: middle;
 }

@@ -7,5 +7,5 @@ let model = {
     },
     wishlist: JSON.parse(localStorage.getItem('wishlist')) || [],
     isAdding: false,
-    categories: ["accessories", "clothing", "home", "tech", "other"]
+    categories: ["Accessories", "Clothing", "Home", "Tech", "Other"]
 };

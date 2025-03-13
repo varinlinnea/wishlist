@@ -2,9 +2,17 @@
 function updateView() {
     document.getElementById('app').innerHTML = /*HTML*/`
         <div class="topNav">
-            <h1>Wishlist</h1>
-            ${createCategoryDropdown()}
-            ${createAddItem()}
+            <div class="navLeft">
+                <h1>Wishlist</h1>
+                ${createCategoryDropdown()}
+                <div class="searchBtnContainer">
+                    <input type="text" placeholder="Search..." class="searchBar" id="searchBar">
+                    <button class="searchBtn">></button>
+                </div>
+            </div>
+            <div class="navRight">
+                ${createAddItem()}
+            </div>
         </div>
         <div class="wishlistContainer">
             ${showWishlist()}
@@ -13,8 +21,9 @@ function updateView() {
 }
 
 function createAddItem(){
-    if(!model.isAdding) return '<button class="addItemBtn" onclick="startAdd()">Add item</button>';
+    if (!model.isAdding) return '<button class="addItemBtn" onclick="startAdd()">+</button>';
     return /*HTML*/`
+        <div class="addItemPopup">
         <form>
             <label for="name">Item name</label>
             <input
@@ -25,6 +34,7 @@ function createAddItem(){
 
             <label for="category">Category</label>
             <select name="category" onchange="model.newItem.category = this.value" value="${model.newItem.category ?? ''}">
+                <option value="" disabled selected></option>
                 <option value="accessories">accessories</option>
                 <option value="clothing">clothing</option>
                 <option value="home">home</option>
@@ -37,18 +47,23 @@ function createAddItem(){
                 type="url"
                 name="link"
                 onchange="model.newItem.webURL = this.value"
-                value="${model.newItem.webURL ?? ''}">
-            
+             value="${model.newItem.webURL ?? ''}">
+
             <label for="picture">Image URL</label>
             <input
                 type="url"
                 name="picture"
                 onchange="model.newItem.imageURL = this.value"
-                value="${model.newItem.imageURL ?? ''}">
-            
-            <button onclick="addItem()">Add to wishlist</button>
-            <button onclick="cancelAddItem()">Cancel</button>
+               value="${model.newItem.imageURL ?? ''}">
+               
+            <div>
+                <button onclick="addItem() class="formBtn"">Add to wishlist</button>
+                <button onclick="cancelAddItem() class="formBtn"">Cancel</button>
+            </div>
         </form>
+    </div>
+
+        
     `;
 }
 
@@ -58,13 +73,18 @@ function showWishlist() {
     for (let item of model.wishlist) {
         wishlistHtml += /*HTML*/`
             <div class="wishlistElement">
-                <div class="leftContainer">
-                    <div>${item.category}</div>
-                    <div>${item.name}</div>
-                    <a href="${item.webURL}">Link to website</a>
+                <div class="imageContainer">
+                    <img class="itemImg" src="${item.imageURL}">
                 </div>
-                <img class="itemImg" src="${item.imageURL}">
-                <button onclick="deleteItem(${index})">x</button>
+                <div class="textContainer">
+                    <div>${item.name}</div>
+                    <div>Category: ${item.category}</div>
+                </div>
+                <div>              
+                    <button class="itemBtn" onclick="deleteItem(${index})">Delete Item</button>
+                    <button class="itemBtn">Edit Item</button>
+                    <a href=${item.webURL} target="_parent"><button class="itemBtn">Link</button></a>
+                </div>
             </div>
         `;
         index++;
@@ -84,3 +104,4 @@ function createCategoryDropdown() {
     categoryHTML += '</div></div>';
     return categoryHTML;
 }
+
