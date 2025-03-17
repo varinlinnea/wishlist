@@ -57,8 +57,8 @@ function createAddItem(){
                value="${model.newItem.imageURL ?? ''}">
                
             <div>
-                <button onclick="addItem() class="formBtn"">Add to wishlist</button>
-                <button onclick="cancelAddItem() class="formBtn"">Cancel</button>
+                <button onclick="addItem()" class="formBtn"">Add to wishlist</button>
+                <button onclick="cancelAddItem()" class="formBtn"">Cancel</button>
             </div>
         </form>
     </div>

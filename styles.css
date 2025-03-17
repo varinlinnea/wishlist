@@ -1,6 +1,7 @@
 .itemImg {
     width: 250px;
-    border-radius: 25px;
+    border-radius: 15px;
+    border: 1px solid #4F684C;
 }
 
 .wishlistContainer {
@@ -10,7 +11,7 @@
 }
 
 .wishlistElement {
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -55,7 +56,6 @@
 
 .addItemPopup {
     position: absolute;
-    z-index: 101;
     width: 500px;
     right: 30px;
     top: -10px;
@@ -66,7 +66,6 @@
     justify-content: center;
     flex-direction: column;
     background-color: #4F684C;
-    z-index: 101;
     padding: 20px;
     font-family: "Quicksand", serif;
     font-weight: bolder;
