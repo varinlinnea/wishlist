@@ -3,9 +3,17 @@ let model = {
         category: '',
         webURL: '',
         imgURL: '',
-        name: ''
+        name: '',
     },
     wishlist: JSON.parse(localStorage.getItem('wishlist')) || [],
     isAdding: false,
-    categories: ["Accessories", "Clothing", "Home", "Tech", "Other"]
+    category: {
+        itemCategories: ["Accessories", "Clothing", "Home", "Tech", "Other"],
+        sortedByCategory : []
+    },
+    search: {
+        query: '',
+        searchResults: [],
+        searchActive: false,
+    }
 };

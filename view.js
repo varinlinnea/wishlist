@@ -1,23 +1,31 @@
 
 function updateView() {
-    document.getElementById('app').innerHTML = /*HTML*/`
+    html = '';
+    html += /*HTML*/`
         <div class="topNav">
             <div class="navLeft">
                 <h1>Wishlist</h1>
                 ${createCategoryDropdown()}
                 <div class="searchBtnContainer">
                     <input type="text" placeholder="Search..." class="searchBar" id="searchBar">
-                    <button class="searchBtn">></button>
+                    <button class="searchBtn" onclick="search(searchBar.value)">></button>
                 </div>
             </div>
             <div class="navRight">
+                <button class="homeBtn" onclick="backToHome()">Home</button>
                 ${createAddItem()}
             </div>
-        </div>
+        </div>`;
+
+    if (!model.search.searchActive) {
+        html += /*HTML*/ `
         <div class="wishlistContainer">
             ${showWishlist()}
-        </div>
-    `;
+        </div>`;
+    } else {
+        html += /*HTML*/`${showSearchResults()}`;
+    }
+    document.getElementById('app').innerHTML = html;
 }
 
 function createAddItem(){
@@ -56,7 +64,7 @@ function createAddItem(){
                 onchange="model.newItem.imageURL = this.value"
                value="${model.newItem.imageURL ?? ''}">
                
-            <div>
+            <div class="formBtnContainer">
                 <button onclick="addItem()" class="formBtn"">Add to wishlist</button>
                 <button onclick="cancelAddItem()" class="formBtn"">Cancel</button>
             </div>
@@ -98,10 +106,40 @@ function createCategoryDropdown() {
         <div id="categoryDropdown" class="dropdownContent">
         `;
 
-    for (let category of model.categories) {
-        categoryHTML += /*HTML*/`<div onclick="sortByCategory(category)">${category}</div>`;
+    for (let category of model.category.itemCategories) {
+        categoryHTML += /*HTML*/`<div onclick="sortByCategory(${category})">${category}</div>`;
     }
     categoryHTML += '</div></div>';
     return categoryHTML;
 }
 
+function showSearchResults() {
+    let searchResultsHtml = /*HTML*/`
+        <div class="searchHeader">
+            <div>Showing search results for "${model.search.query}"...</div>
+        </div><div class="wishlistContainer">
+    `;
+    let index = 0;
+
+    for (let item of model.search.searchResults) {
+        searchResultsHtml += /*HTML*/`
+            <div class="wishlistElement">
+                <div class="imageContainer">
+                    <img class="itemImg" src="${item.imageURL}">
+                </div>
+                <div class="textContainer">
+                    <div>${item.name}</div>
+                    <div>Category: ${item.category}</div>
+                </div>
+                <div>              
+                    <button class="itemBtn" onclick="deleteItem(${index})">Delete Item</button>
+                    <button class="itemBtn">Edit Item</button>
+                    <a href=${item.webURL} target="_parent"><button class="itemBtn">Link</button></a>
+                </div>
+            </div>
+        `;
+        index++;
+    }
+    searchResultsHtml += '</div>';
+    return searchResultsHtml;
+}

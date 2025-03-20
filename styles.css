@@ -46,12 +46,22 @@
     height: 50px;
     position: relative;
     right: 20px;
-    background-color: #2f2e33;
+    background-color: transparent;
     color: #F4ECE6;
     font-family: "Quicksand", serif;
     font-weight: bolder;
-    font-size: 30px;
+    font-size: 40px;
     border: 0;
+}
+
+.homeBtn {
+    border: 0;
+    color: #F4ECE6;
+    background-color: transparent;
+    margin-right: 30px;
+    font-weight: bolder;
+    font-family: "Playfair Display", serif;
+    font-size: large;
 }
 
 .addItemPopup {
@@ -71,7 +81,6 @@
     font-weight: bolder;
 }
 .addItemPopup > form > * {
-    margin: 2px;
     padding: 2px;
     border: 0;
 }
@@ -79,10 +88,23 @@
 .addItemPopup > form > input {
     border: 0;
     height: 20px;
+    padding: 5px;
 }
 
+.formBtnContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
 .formBtn {
-    font-family: "Quicksand", serif;
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    color:#F4ECE6;
+    background-color: #8A9A5B;
+    border: 0;
+    padding: 5px;
+    font-size: 18px;
+    margin-top: 10px;
 }
 
 .topNav {
@@ -110,6 +132,8 @@
 .navRight {
     position: relative;
     height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 body {
@@ -128,7 +152,7 @@ body {
 }
 
 .dropBtn:hover, .dropBtn:focus {
-    background-color: #8B5E69;
+    background-color: #4F684C;
 }
 
 .dropdown {
@@ -141,7 +165,7 @@ body {
     position: absolute;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     min-width: 160px;
-    background-color: #8B5E69;
+    background-color: #4F684C;
     padding: 10px;
 }
 
@@ -182,4 +206,13 @@ body {
     border: 0; 
     height: 36px;
     vertical-align: middle;
+}
+
+.searchHeader {
+    display: flex;
+    color: #F4ECE6;
+    font-size: larger;
+    padding: 10px;
+    font-family: "Quicksand", serif;
+    margin-left: 20px;
 }
